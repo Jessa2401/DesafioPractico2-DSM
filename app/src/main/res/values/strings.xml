@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">DesafioPractico2</string>
+    <string name="hint_email">Correo Electrónico</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="btn_register">Registrar</string>
+    <string name="btn_login">Iniciar Sesión</string>
+    <string name="text_ingresar">Ingresar</string>
+    <string name="text_registrar">Registrar</string>
+    <string name="text_noposeescuenta">¿No posees una cuenta?</string>
+    <string name="text_yatienescuente">¿Ya posees una cuenta?</string>
 </resources>
