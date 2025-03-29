@@ -13,6 +13,21 @@
         android:theme="@style/Theme.DesafioPractico2"
         tools:targetApi="31">
         <activity
+            android:name=".NotasEstudiantesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GradesListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GradesList"
+            android:exported="false" />
+        <activity
+            android:name=".NotasList"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrarNotas"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
@@ -26,7 +41,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

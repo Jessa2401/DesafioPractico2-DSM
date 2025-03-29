@@ -8,6 +8,11 @@ android {
     namespace = "com.example.desafiopractico2"
     compileSdk = 35
 
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.desafiopractico2"
         minSdk = 24
@@ -47,6 +52,8 @@ dependencies {
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play.services.auth)
     implementation(libs.googleid)
+    implementation(libs.firebase.database)
+    implementation(libs.androidx.espresso.core)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

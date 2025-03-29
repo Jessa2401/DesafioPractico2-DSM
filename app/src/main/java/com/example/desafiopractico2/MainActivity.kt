@@ -1,9 +1,12 @@
 package com.example.desafiopractico2
 
+import android.app.DownloadManager.Query
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.ListView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,35 +16,40 @@ import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
+
+
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main) // Asegúrate de tener este layout
+        setContentView(R.layout.activity_main)
 
-        // Configuración inicial de la actividad
+        auth = FirebaseAuth.getInstance()
+
+        // Configuración inicial
         setSupportActionBar(findViewById(R.id.toolbar))
+
+        // Botón para agregar notas
+        findViewById<Button>(R.id.btnAddGrades).setOnClickListener {
+            startActivity(Intent(this, RegistrarNotas::class.java))
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main,menu)
+        menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when(item.itemId) {
             R.id.action_sing_out -> {
-                FirebaseAuth.getInstance()
-                    .signOut()
-                    .also {
-                        Toast.makeText(
-                            this,
-                            "Sesión Cerrada",
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                        val intent=Intent(this,RegisterActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    }
+                auth.signOut().also {
+                    Toast.makeText(this, "Sesión Cerrada", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, RegisterActivity::class.java))
+                    finish()
+                }
+                return true
             }
         }
         return super.onOptionsItemSelected(item)

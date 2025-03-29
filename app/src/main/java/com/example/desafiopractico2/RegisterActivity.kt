@@ -48,9 +48,16 @@ class RegisterActivity : AppCompatActivity() {
             Toast.makeText(this,"Los campos no pueden estar vacios",Toast.LENGTH_SHORT).show()
             return
         }
+
+        if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            Toast.makeText(this, "Ingrese una dirección de correo electrónico válido",Toast.LENGTH_SHORT).show()
+            return
+        }
+
         auth.createUserWithEmailAndPassword(email,password)
             .addOnCompleteListener{task ->
                 if (task.isSuccessful){
+                    Toast.makeText(this, "Registro exitoso!", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this,MainActivity::class.java)
                     startActivity(intent)
                     finish()
